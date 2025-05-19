@@ -1,0 +1,17 @@
+name: 03 - Workflow Runners
+on: 
+  push:
+  workflow_dispatch:
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Show the triggering event
+            run: echo "This workflow is running on ${{ runner.os }}."
+    
+    test:
+        runs-on: windows-latest
+        steps:
+          - name: Show the triggering event
+            run: echo "This workflow is running on ${{ runner.os }}."
