@@ -25,7 +25,6 @@ jobs:
       # Runs a single command using the runners shell
       - name: Say hello
         run: echo Hello, world!
-        exit 0
   echo-goodbye:
     # The type of runner that the job will run on
     runs-on: ubuntu-latest
