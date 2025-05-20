@@ -1,8 +1,17 @@
 name: 05 - Contexts
 
+env:
+    MY_WORKFLOW_VAR: "workflow"
+    MY_OVERWRITTEN_VAR: "workflow"
 on: 
-    push:
+    # push:
     workflow_dispatch:
+      inputs:
+        debug:
+          description: 'Enable debug mode'
+          type: boolean
+          required: false
+          default: false
 
 jobs:
     echo-data:
@@ -17,6 +26,22 @@ jobs:
                 echo "Workflow: ${{ github.workflow }}"
                 echo "Run ID: ${{ github.run_id }}"
                 echo "Run number: ${{ github.run_number }}"
+            env:
+                MY_JOB_VAR: "job"
+                MY_OVERWRITTEN_VAR: "job"
           - name: Retrieve Variable
             run: |
               echo "MY_VAR: ${{ vars.MY_VAR }}"
+          - name: Print Environment Variables
+            run: |
+              echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
+              echo "Overwritten env: $MY_OVERWRITTEN_VAR"
+            env:
+              MY_OVERWRITTEN_VAR: "step"
+          - name: Retrieve Variable
+            run: |
+              echo "MY_VAR: ${{ vars.MY_VAR }}"
+          - name: Print Environment Variables2
+            run: |
+              echo "Workflow env: ${{ env.MY_WORKFLOW_VAR }}"
+              echo "Overwritten env: $MY_OVERWRITTEN_VAR"
