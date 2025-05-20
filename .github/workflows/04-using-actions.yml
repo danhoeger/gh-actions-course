@@ -11,6 +11,13 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
+      - name: Priting Folders
+        run: |
+          echo "Current Directory: $(pwd)"
+          echo "Node Modules Directory: $(ls -la node_modules)"
+          echo "Node Version: $(node -v)"
+          echo "NPM Version: $(npm -v)"
+          ls -la
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
