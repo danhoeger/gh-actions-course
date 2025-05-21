@@ -29,6 +29,10 @@ jobs:
           echo "output1=output1" >> $GITHUB_OUTPUT
           echo "output2=output2" >> $GITHUB_OUTPUT
           cat "$GITHUB_OUTPUT"
+      - name: step with mistake
+        id: step-with-mistake
+        run: |
+          echo "This step has a mistake."
           echo "mistake=true" > $GITHUB_OUTPUT
           cat "$GITHUB_OUTPUT"
   deploy:
