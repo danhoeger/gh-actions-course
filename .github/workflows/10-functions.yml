@@ -10,6 +10,9 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Failing step
+        run: sleep 20
+
+      - name: Failing step
         run: |
             echo "This step will fail"
             exit 1
