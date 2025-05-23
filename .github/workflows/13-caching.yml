@@ -22,7 +22,7 @@ jobs:
       run:
         working-directory: 13-caching/react-app
     outputs:
-      cache-key: ${{ steps.cache-key.outputs.CACHE_KEY }}
+      deps-cache-key: ${{ steps.cache-key.outputs.CACHE_KEY }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -63,7 +63,7 @@ jobs:
         id: cache
         with:
           path: 13-caching/react-app/node_modules
-          key: ${{ needs.install-deps.outputs.cache-key }}
+          key: ${{ needs.install-deps.outputs.deps-cache-key }}
       - name: Testing
         run: npm run test
       - name: Linting
@@ -86,7 +86,7 @@ jobs:
         id: cache
         with:
           path: 13-caching/react-app/node_modules
-          key: ${{ needs.install-deps.outputs.cache-key }}
+          key: ${{ needs.install-deps.outputs.deps-cache-key }}
       - name: Building
         run: npm run build
       - name: Deploying to nonprod
