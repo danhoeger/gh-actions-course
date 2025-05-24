@@ -3,7 +3,7 @@ on:
   workflow_dispatch:
 jobs:
     backwards-compatibility:
-      runs-on: ubuntu-latest
+      runs-on: ${{ matrix.os }}
       strategy:
         fail-fast: false
         matrix:
@@ -12,7 +12,8 @@ jobs:
             - ubuntu-latest
             - windows-latest
           include:
-            - os: ubuntu-latest-21.x
+            - os: ubuntu-latest
+              node-version: 21.x
               tag: experimental
             - os: ubuntu-latest
               node-version: 16.x
