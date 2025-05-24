@@ -46,6 +46,8 @@ jobs:
                   opacity: 75
                 - shape: circle
                   opacity: 100
+              exclue:
+                - opacity: 75
         steps:
             # - name: Checkout code
             #   uses: actions/checkout@v4
