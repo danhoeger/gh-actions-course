@@ -14,7 +14,6 @@ jobs:
           include:
             - os: ubuntu-latest
               node-version: 21.x
-              tag: experimental
             - os: ubuntu-latest
               node-version: 16.x
       steps:
@@ -24,13 +23,9 @@ jobs:
           uses: actions/setup-node@v4
           with:
             node-version: ${{ matrix.node-version }}
-        - name: fail if experimental
-          if: ${{ matrix.tag == 'experimental' }}
-          run: exit 1
         - name: Perform some tests
           run: |
             echo "Running on ${{ matrix.os }} with Node.js version ${{ matrix.node-version }}"
-            sleep 10
         - name: Perform some tests
           run: echo "Uploading Test Results"
     include-example:
