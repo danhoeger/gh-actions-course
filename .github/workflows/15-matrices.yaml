@@ -29,7 +29,7 @@ jobs:
         - name: Perform some tests
           run: echo "Uploading Test Results"
     include-example:
-        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}
+        name: ${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.opacity }}
         runs-on: ubuntu-latest
         strategy:
             matrix:
@@ -37,6 +37,11 @@ jobs:
               shape: [circle, square]
               size: [small, large]
               include:
+                - opacity: 50
+                # - color: red
+                #   opacity: 75
+                # - shape: circle
+                #   opacity: 100
                 - color: red
                   shape: triangle
 
@@ -44,5 +49,5 @@ jobs:
             # - name: Checkout code
             #   uses: actions/checkout@v4
             - name: Dummy step
-              run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}"
+              run: echo "${{ matrix.color }}-${{ matrix.shape }}-${{ matrix.size }}-${{ matrix.opacity }}"
         
