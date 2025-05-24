@@ -49,7 +49,7 @@ jobs:
                 - color: green
                   shape: circle
                   size: medium
-              exclue:
+              exclude:
                 - color: green
                   shape: circle
         steps:
